@@ -1,0 +1,49 @@
+﻿<Window x:Class="ProyectoDI___Rick_and_Morty_API.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ProyectoDI___Rick_and_Morty_API"
+        xmlns:viewmodels="clr-namespace:ProyectoDI___Rick_and_Morty_API.ViewModels"
+        d:DataContext="{d:DesignInstance Type=viewmodels:MainViewModel}"
+        mc:Ignorable="d"
+        Title="Proyecto DI - Rick and Morty API"
+        SizeToContent="WidthAndHeight"
+        ResizeMode="NoResize">
+
+    <Grid>
+        <!-- Definición de filas -->
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <!-- Fondo del grid -->
+        <Grid.Background>
+            <ImageBrush ImageSource="pack://application:,,,/Assets/Images/background6.png" Stretch="UniformToFill"/>
+        </Grid.Background>
+
+        <!-- Imagen título -->
+        <Image Grid.Row="0"
+               Source="pack://application:,,,/Assets/Images/title.png"
+               Stretch="Uniform"
+               HorizontalAlignment="Stretch"
+               Height="240"
+               Margin="5"/>
+
+        <!-- ListBox envuelto en un Border par darle el estilo de tarjeta -->
+        <Border Grid.Row="1" Margin="20" Style="{StaticResource TarjetaBorder}">
+            <StackPanel>
+                <!-- Título -->
+                <TextBlock Text="Seleccione un personaje para visualizar sus datos:" Margin="5, 15" Style="{StaticResource TitleText2}"/>
+
+                <!-- Lista de personajes -->
+                <ListBox ItemsSource="{Binding Personajes}"
+                         SelectedItem="{Binding PersonajeSeleccionado, Mode=TwoWay}"
+                         DisplayMemberPath="name"
+                         SelectionChanged="ListaPersonajes_SelectionChanged"
+                         Style="{StaticResource EstiloListBox}"/>
+            </StackPanel>
+        </Border>
+    </Grid>
+</Window>
