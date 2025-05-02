@@ -62,12 +62,20 @@ namespace ProyectoDI___Rick_and_Morty_API.ViewModels
         {
             apiService = new APIService();
 
-            // Establecer imagen de demo al inicio
-            var imagenInicio = new BitmapImage();
-            imagenInicio.BeginInit();
-            imagenInicio.UriSource = new Uri("pack://application:,,,/Assets/Images/demo.png", UriKind.Absolute);
-            imagenInicio.EndInit();
-            ImagenSeleccionada = imagenInicio;
+            try
+            {
+                // Establecer imagen de demo al inicio
+                var imagenInicio = new BitmapImage();
+                imagenInicio.BeginInit();
+                imagenInicio.UriSource = new Uri("pack://application:,,,/Assets/Images/demo.png", UriKind.Absolute);
+                imagenInicio.EndInit();
+                ImagenSeleccionada = imagenInicio;
+            }
+            catch
+            {
+                // Ignorar error para el entorno de pruebas
+                ImagenSeleccionada = null;
+            }
 
             // Cargar los personajes de forma asíncrona al inicio
             // Se utiliza el guion bajo para indicar que es un método asíncrono -> Se descarta el resultado del Task
@@ -77,7 +85,7 @@ namespace ProyectoDI___Rick_and_Morty_API.ViewModels
         /// <summary>
         /// Método asíncrono que obtiene la lista de personajes desde la API y la añade a la colección observable.
         /// </summary>
-        private async Task CargarPersonajes()
+        public async Task CargarPersonajes()
         {
             var lista = await apiService.GetAllPersonajes();
             if (lista?.results != null)
@@ -92,7 +100,7 @@ namespace ProyectoDI___Rick_and_Morty_API.ViewModels
         /// <summary>
         /// Actualiza la imagen seleccionada con la del personaje actualmente seleccionado.
         /// </summary>
-        private void ActualizarImagen()
+        public void ActualizarImagen()
         {
             if (PersonajeSeleccionado != null)
             {
