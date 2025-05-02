@@ -17,66 +17,95 @@ namespace ProyectoTests
      */
 
     /**
-     * Arrange -> Preparar los objetos y el entorno para la prueba
-     * Act -> Ejecutar el método que se va a probar
-     * Assert -> Comprobar que el resultado es el esperado
+     * ARRANGE -> Preparar los objetos y el entorno para la prueba
+     * ACT -> Ejecutar el método que se va a probar
+     * ASSERT -> Comprobar que el resultado es el esperado
      */
 
     public class APIServiceTests
     {
-        
 
+        /// <summary>
+        /// Prueba unitaria del método GetPersonajeById(int id) de la clase APIService.
+        /// Verifica que el servicio devuelve correctamente un personaje específico (ID = 1)
+        /// con los datos esperados obtenidos directamente desde la API de Rick and Morty.
+        /// </summary>
+        /// <returns>Tarea asincrónica que valida el contenido del objeto Personaje.</returns>
         [Fact]
-        public async Task GetPersonajeById_ReturnsExpectedPersonaje()
+        public async Task GetPersonajeById_ReturnsPersonaje()
         {
-            // ----------------------------------------------------------------------------------------------------------
-            // Arrange
-            // ----------------------------------------------------------------------------------------------------------
-            // Crear instancia del personaje con los datos que se esperan obtener
-            var personajeEsperado = new Personaje { id = 1, name = "Rick Sanchez" };
-            // Convertir el personaje a JSON
-            var personajeJson = JsonConvert.SerializeObject(personajeEsperado);
+            // -----------
+            // [ Arrange ]
+            // -----------
 
-            // Crear un manejador de mensajes HTTP simulado
-            var handlerMock = new FakeHttpMessageHandler(new HttpResponseMessage
-            {
-                StatusCode = HttpStatusCode.OK, // Simular una respuesta exitosa
-                Content = new StringContent(personajeJson) // Cuerpo del mensaje con el JSON del personaje
-            });
-
-            // Crear una instancia de HttpClient con el manejador simulado
-            var httpClient = new HttpClient(handlerMock);
-
-            // Crear una instancia del servicio APIService con el cliente simulado
+            // Crear una instancia del servicio APIService
             var service = new APIService();
 
-            // ----------------------------------------------------------------------------------------------------------
-            // Act
-            // ----------------------------------------------------------------------------------------------------------
+            // -------
+            // [ Act ]
+            // -------
+
+            // Ejecutar el método que se va a probar
             var result = await service.GetPersonajeById(1);
 
-            // ----------------------------------------------------------------------------------------------------------
-            // Assert
-            // ----------------------------------------------------------------------------------------------------------
+            // ----------
+            // [ Assert ]
+            // ----------
+
+            // Comprobar que el resultado no es nulo y que los datos son los esperados
             Assert.NotNull(result);
-            Assert.Equal("Rick Sanchez", result.name);
             Assert.Equal(1, result.id);
+            Assert.Equal("Rick Sanchez", result.name);
+            Assert.Equal("Alive", result.status);
+            Assert.Equal("Male", result.gender);
         }
 
-        // Clase interna para simular el comportamiento de HttpClient
-        public class FakeHttpMessageHandler : HttpMessageHandler
+        /// <summary>
+        /// Prueba unitaria del método GetAllPersonajes() de la clase APIService.
+        /// Valida que la llamada a la API pública devuelve una lista no vacía de personajes
+        /// y comprueba que los primeros personajes coinciden con los valores esperados
+        /// (Rick, Morty y Summer) en nombre, estado y género.
+        /// </summary>
+        /// <returns>Tarea asincrónica que valida el contenido del objeto ListaPersonajes.</returns>
+        [Fact]
+        public async Task GetAllPersonajes_ReturnsListaPersonajes()
         {
-            private readonly HttpResponseMessage _response;
+            // -----------
+            // [ Arrange ]
+            // -----------
 
-            public FakeHttpMessageHandler(HttpResponseMessage response)
-            {
-                _response = response;
-            }
+            // Crear una instancia del servicio APIService
+            var apiService = new APIService();
 
-            protected override Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
-            {
-                return Task.FromResult(_response);
-            }
+            // -------
+            // [ Act ]
+            // -------
+
+            // Ejecutar el método que se va a probar
+            var result = await apiService.GetAllPersonajes();
+
+            // ----------
+            // [ Assert ]
+            // ----------
+
+            // Comprobar que el resultado no es nulo y que contiene los datos esperados
+            Assert.NotNull(result);
+            Assert.NotEmpty(result.results);
+
+            // Datos del personaje 1 [0]
+            Assert.Equal("Rick Sanchez", result.results[0].name);
+            Assert.Equal("Alive", result.results[0].status);
+            Assert.Equal("Male", result.results[0].gender);
+
+            // Datos del personaje 2 [1]
+            Assert.Equal("Morty Smith", result.results[1].name);
+            Assert.Equal("Alive", result.results[1].status);
+            Assert.Equal("Male", result.results[1].gender);
+
+            // Datos del personaje 3 [2]
+            Assert.Equal("Summer Smith", result.results[2].name);
+            Assert.Equal("Alive", result.results[2].status);
+            Assert.Equal("Female", result.results[2].gender);
         }
     }
 }
