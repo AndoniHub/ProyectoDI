@@ -1,5 +1,5 @@
-﻿using ProyectoDI___Rick_and_Morty_API.Models;
-using ProyectoDI___Rick_and_Morty_API.ViewModels;
+﻿using RickAndMortyAPI.Models;
+using RickAndMortyAPI.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;

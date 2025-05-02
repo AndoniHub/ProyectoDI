@@ -1,5 +1,5 @@
 ﻿using Newtonsoft.Json;
-using ProyectoDI___Rick_and_Morty_API.Models;
+using RickAndMortyAPI.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,7 +7,7 @@ using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ProyectoDI___Rick_and_Morty_API.Controllers
+namespace RickAndMortyAPI.Services
 {
     /// <summary>
     /// Servicio encargado de gestionar las peticiones HTTP a la API pública de Rick and Morty.

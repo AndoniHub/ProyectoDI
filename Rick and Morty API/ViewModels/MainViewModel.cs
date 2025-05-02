@@ -1,5 +1,5 @@
-﻿using ProyectoDI___Rick_and_Morty_API.Controllers;
-using ProyectoDI___Rick_and_Morty_API.Models;
+﻿using RickAndMortyAPI.Services;
+using RickAndMortyAPI.Models;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 using System.Windows.Controls;
 using System.Windows.Media.Imaging;
 
-namespace ProyectoDI___Rick_and_Morty_API.ViewModels
+namespace RickAndMortyAPI.ViewModels
 {
     /// <summary>
     /// ViewModel principal que gestiona los datos y la lógica para la vista MainWindow.

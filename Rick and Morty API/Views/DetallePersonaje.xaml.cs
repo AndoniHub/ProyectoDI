@@ -1,4 +1,4 @@
-﻿using ProyectoDI___Rick_and_Morty_API.Models;
+﻿using RickAndMortyAPI.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,7 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace ProyectoDI___Rick_and_Morty_API.Views
+namespace RickAndMortyAPI.Views
 {
     /// <summary>
     /// Lógica de interacción para DetallePersonaje.xaml

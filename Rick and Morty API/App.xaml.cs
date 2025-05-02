@@ -2,7 +2,7 @@
 using System.Data;
 using System.Windows;
 
-namespace ProyectoDI___Rick_and_Morty_API
+namespace RickAndMortyAPI
 {
     /// <summary>
     /// Interaction logic for App.xaml

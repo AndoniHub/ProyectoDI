@@ -1,7 +1,7 @@
-﻿using ProyectoDI___Rick_and_Morty_API.Controllers;
-using ProyectoDI___Rick_and_Morty_API.Models;
-using ProyectoDI___Rick_and_Morty_API.ViewModels;
-using ProyectoDI___Rick_and_Morty_API.Views;
+﻿using RickAndMortyAPI.Services;
+using RickAndMortyAPI.Models;
+using RickAndMortyAPI.ViewModels;
+using RickAndMortyAPI.Views;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace ProyectoDI___Rick_and_Morty_API
+namespace RickAndMortyAPI
 {
 
     /// <summary>

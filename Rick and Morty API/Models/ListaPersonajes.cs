@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ProyectoDI___Rick_and_Morty_API.Models
+namespace RickAndMortyAPI.Models
 {
     public class ListaPersonajes
     {

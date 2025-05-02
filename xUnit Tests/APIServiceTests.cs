@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
-using ProyectoDI___Rick_and_Morty_API.Controllers;
-using ProyectoDI___Rick_and_Morty_API.Models;
+using RickAndMortyAPI.Services;
+using RickAndMortyAPI.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
