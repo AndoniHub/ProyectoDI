@@ -3,10 +3,11 @@
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
     <TargetFramework>net8.0-windows</TargetFramework>
-    <RootNamespace>ProyectoDI___Rick_and_Morty_API</RootNamespace>
+    <RootNamespace>ProyectoDIRickAndMortyAPI</RootNamespace>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <UseWPF>true</UseWPF>
+    <ApplicationIcon>Assets\Images\icon.ico</ApplicationIcon>
   </PropertyGroup>
 
   <ItemGroup>
@@ -14,6 +15,10 @@
     <None Remove="Assets\Images\background6.png" />
     <None Remove="Assets\Images\demo.png" />
     <None Remove="Assets\Images\title.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Assets\Images\icon.ico" />
   </ItemGroup>
 
   <ItemGroup>

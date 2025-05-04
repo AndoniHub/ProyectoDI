@@ -10,6 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Controls;
 using System.Windows.Media.Imaging;
+using System.Windows;
 
 namespace RickAndMortyAPI.ViewModels
 {
@@ -94,6 +95,11 @@ namespace RickAndMortyAPI.ViewModels
                 {
                     Personajes.Add(personaje);
                 }
+            } else
+            {
+                MessageBox.Show("Lo sentimos, no ha sido posible cargar los datos de los personajes Rick and Morty." +
+                    "\nCompruebe su conexión a internet y si esta disponible la API publica:" +
+                    "\nhttps://rickandmortyapi.com/", "Error al obtener los personajes", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 
